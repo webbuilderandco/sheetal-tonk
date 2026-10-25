@@ -1,0 +1,6 @@
+{
+  "name": "Hotel Sheetal Tonk",
+  "description": "Official website for Hotel Sheetal in Tonk, Rajasthan on NH-52 Jaipur-Kota corridor. Features AC luxury rooms, multi-cuisine glass restaurant, wedding lawns, and online room booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

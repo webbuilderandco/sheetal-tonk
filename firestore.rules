@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidBooking(data) {
+      return data.keys().hasAll(['ref', 'name', 'phone', 'roomType', 'checkIn', 'checkOut', 'status']) &&
+        data.keys().hasOnly(['ref', 'name', 'phone', 'email', 'roomType', 'checkIn', 'checkOut', 'nights', 'guests', 'totalAmount', 'specialRequest', 'createdAt', 'status']) &&
+        data.ref is string && data.ref.size() <= 64 &&
+        data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+        data.phone is string && data.phone.size() > 0 && data.phone.size() <= 25 &&
+        data.roomType is string && data.roomType.size() <= 100 &&
+        data.checkIn is string && data.checkIn.size() <= 30 &&
+        data.checkOut is string && data.checkOut.size() <= 30 &&
+        data.status in ['Confirmed', 'Pending', 'Checked In', 'Completed', 'Cancelled'] &&
+        (!('email' in data) || (data.email is string && data.email.size() <= 100)) &&
+        (!('nights' in data) || data.nights is number) &&
+        (!('guests' in data) || data.guests is number) &&
+        (!('totalAmount' in data) || data.totalAmount is number) &&
+        (!('specialRequest' in data) || (data.specialRequest is string && data.specialRequest.size() <= 500)) &&
+        (!('createdAt' in data) || (data.createdAt is string && data.createdAt.size() <= 100));
+    }
+
+    function isValidSettings(data) {
+      return data.keys().hasAll(['whatsappNumber']) &&
+        data.keys().hasOnly(['whatsappNumber', 'updatedAt']) &&
+        data.whatsappNumber is string && data.whatsappNumber.size() <= 25 &&
+        (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 100));
+    }
+
+    // Connection test document
+    match /test/connection {
+      allow read: if true;
+    }
+
+    // Bookings collection
+    match /bookings/{bookingId} {
+      allow read: if true;
+      allow create: if isValidId(bookingId) && isValidBooking(incoming());
+      allow update: if isValidId(bookingId) && isValidBooking(incoming());
+      allow delete: if isValidId(bookingId);
+    }
+
+    // Hotel settings collection
+    match /settings/{settingId} {
+      allow read: if true;
+      allow create, update: if isValidId(settingId) && isValidSettings(incoming());
+      allow delete: if false;
+    }
+  }
+}

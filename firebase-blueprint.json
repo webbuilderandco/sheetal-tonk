@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "Booking": {
+      "title": "Booking",
+      "description": "Hotel Sheetal Tonk room, banquet, or table reservation record",
+      "type": "object",
+      "properties": {
+        "ref": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 25 },
+        "email": { "type": "string", "maxLength": 100 },
+        "roomType": { "type": "string", "maxLength": 100 },
+        "checkIn": { "type": "string", "maxLength": 30 },
+        "checkOut": { "type": "string", "maxLength": 30 },
+        "nights": { "type": "number" },
+        "guests": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "specialRequest": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "maxLength": 100 },
+        "status": {
+          "type": "string",
+          "enum": ["Confirmed", "Pending", "Checked In", "Completed", "Cancelled"]
+        }
+      },
+      "required": ["ref", "name", "phone", "roomType", "checkIn", "checkOut", "status"]
+    },
+    "HotelSettings": {
+      "title": "HotelSettings",
+      "description": "Global hotel settings like WhatsApp concierge phone number",
+      "type": "object",
+      "properties": {
+        "whatsappNumber": { "type": "string", "maxLength": 25 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["whatsappNumber"]
+    }
+  },
+  "firestore": {
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Reservations for rooms, dining, and wedding banquets at Hotel Sheetal Tonk"
+    },
+    "/settings/{settingId}": {
+      "schema": "HotelSettings",
+      "description": "Hotel configuration documents"
+    }
+  }
+}

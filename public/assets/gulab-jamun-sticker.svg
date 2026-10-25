@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 450" width="500" height="450">
+  <defs>
+    <!-- Filter for thick white sticker border and drop shadow -->
+    <filter id="stickerShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="rgba(0,0,0,0.35)" />
+    </filter>
+
+    <linearGradient id="bowlRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8a873" />
+      <stop offset="50%" stop-color="#b07848" />
+      <stop offset="100%" stop-color="#6e4220" />
+    </linearGradient>
+
+    <radialGradient id="syrup" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#421303" />
+      <stop offset="70%" stop-color="#220800" />
+      <stop offset="100%" stop-color="#120400" />
+    </radialGradient>
+
+    <radialGradient id="jamunLeft" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#db6028" />
+      <stop offset="25%" stop-color="#9e3412" />
+      <stop offset="65%" stop-color="#591605" />
+      <stop offset="100%" stop-color="#2b0900" />
+    </radialGradient>
+
+    <radialGradient id="jamunTop" cx="42%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#e06830" />
+      <stop offset="30%" stop-color="#a33714" />
+      <stop offset="70%" stop-color="#5e1806" />
+      <stop offset="100%" stop-color="#2e0a00" />
+    </radialGradient>
+
+    <radialGradient id="jamunRight" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#e26b32" />
+      <stop offset="28%" stop-color="#a63915" />
+      <stop offset="68%" stop-color="#611a07" />
+      <stop offset="100%" stop-color="#300b00" />
+    </radialGradient>
+
+    <!-- Glossy Specular Highlights -->
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="pista" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4e84f" />
+      <stop offset="100%" stop-color="#7fa823" />
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#stickerShadow)">
+    <!-- Outer Die-Cut White Sticker Border -->
+    <path d="M 85 240 C 60 180, 80 110, 150 70 C 200 40, 300 40, 360 75 C 430 115, 450 185, 425 245 C 410 275, 420 310, 395 345 C 370 380, 330 385, 250 385 C 170 385, 130 380, 105 345 C 80 310, 95 275, 85 240 Z"
+          fill="#ffffff" stroke="#f0f0f0" stroke-width="4" />
+
+    <!-- Ceramic Bowl Base & Rim -->
+    <ellipse cx="250" cy="205" rx="165" ry="105" fill="url(#bowlRim)" />
+    <ellipse cx="250" cy="202" rx="155" ry="95" fill="#542e13" />
+    <ellipse cx="250" cy="205" rx="145" ry="82" fill="url(#syrup)" />
+
+    <!-- 1. Top/Center Gulab Jamun (Back) -->
+    <g id="jamun-top">
+      <ellipse cx="225" cy="150" rx="55" ry="58" fill="url(#jamunTop)" />
+      <!-- Texture speckles & gloss -->
+      <ellipse cx="212" cy="136" rx="16" ry="8" transform="rotate(-15 212 136)" fill="url(#gloss)" />
+      <!-- Pistachio Garnish -->
+      <path d="M 205 118 Q 220 108 235 125 Q 220 125 205 118 Z" fill="url(#pista)" />
+      <path d="M 228 114 Q 242 120 236 135 Q 228 126 228 114 Z" fill="#ffd13b" />
+    </g>
+
+    <!-- 2. Left Gulab Jamun -->
+    <g id="jamun-left">
+      <ellipse cx="180" cy="210" rx="66" ry="68" fill="url(#jamunLeft)" />
+      <!-- Highlights -->
+      <ellipse cx="162" cy="190" rx="22" ry="12" transform="rotate(-20 162 190)" fill="url(#gloss)" />
+      <circle cx="188" cy="205" r="4" fill="#ffffff" opacity="0.6" />
+      <circle cx="152" cy="215" r="2.5" fill="#ffffff" opacity="0.5" />
+      <!-- Pistachio Slivers -->
+      <path d="M 160 172 Q 178 165 192 182 Q 175 182 160 172 Z" fill="url(#pista)" />
+      <path d="M 185 168 Q 198 174 192 188 Q 185 178 185 168 Z" fill="#ffd13b" />
+    </g>
+
+    <!-- 3. Right Gulab Jamun -->
+    <g id="jamun-right">
+      <ellipse cx="295" cy="205" rx="68" ry="72" fill="url(#jamunRight)" />
+      <!-- Highlights -->
+      <ellipse cx="278" cy="180" rx="25" ry="14" transform="rotate(-15 278 180)" fill="url(#gloss)" />
+      <circle cx="312" cy="195" r="5" fill="#ffffff" opacity="0.65" />
+      <circle cx="270" cy="215" r="3" fill="#ffffff" opacity="0.5" />
+      <circle cx="325" cy="212" r="2.5" fill="#ffffff" opacity="0.45" />
+      <!-- Pistachio Slivers -->
+      <path d="M 285 160 Q 306 150 318 170 Q 302 172 285 160 Z" fill="url(#pista)" />
+      <path d="M 310 156 Q 325 165 318 180 Q 312 168 310 156 Z" fill="#ffd13b" />
+    </g>
+
+    <!-- Sugar Syrup Reflection in Bowl -->
+    <ellipse cx="250" cy="265" rx="80" ry="12" fill="#ffffff" opacity="0.15" />
+
+    <!-- Bottom Banner: 'Gulab Jamun' -->
+    <g id="banner" transform="translate(0, 30)">
+      <!-- White Banner Backing -->
+      <path d="M 95 315 C 95 288, 405 288, 405 315 C 405 342, 390 355, 360 358 C 290 365, 210 365, 140 358 C 110 355, 95 342, 95 315 Z"
+            fill="#ffffff" stroke="#f2f2f2" stroke-width="4" />
+
+      <!-- Text: Gulab Jamun -->
+      <text x="250" y="338"
+            font-family="'Arial Black', 'Poppins', sans-serif"
+            font-weight="900"
+            font-size="46"
+            fill="#a81e32"
+            text-anchor="middle"
+            letter-spacing="1">Gulab Jamun</text>
+    </g>
+
+    <!-- Four-Point Sparkle Stars -->
+    <g id="sparkles" fill="#ffb703">
+      <!-- Top Left Star -->
+      <path d="M 65 60 Q 75 70 85 70 Q 75 70 65 80 Q 65 70 55 70 Q 65 70 65 60 Z" transform="scale(0.8) translate(10, 10)" />
+      <!-- Top Right Star -->
+      <path d="M 420 50 Q 430 65 445 65 Q 430 65 420 80 Q 420 65 405 65 Q 420 65 420 50 Z" transform="scale(0.9) translate(15, 15)" />
+    </g>
+  </g>
+</svg>
